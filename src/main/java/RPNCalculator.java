@@ -6,18 +6,12 @@ import java.util.function.DoubleBinaryOperator;
 /**
  * @author kamildev7 on 2018-08-24.
  */
-public class Test {
+public class RPNCalculator {
 
     private static Map<String, DoubleBinaryOperator> arithmeticalOperations = Operation.getOperations();
     private Deque<Integer> deque = new ArrayDeque<>();
 
-    public static void main(String[] args) {
-        String result = new Test().calculateRPNValue(args);
-
-        System.out.println("result: " + result);
-    }
-
-    private String calculateRPNValue(String[] rpnString) {
+    public String calculateRPNValue(String[] rpnString) {
         if (rpnString == null || rpnString.length == 0) {
             throw new NumberFormatException("Wrong rpn String");
         }
@@ -41,7 +35,7 @@ public class Test {
     }
 
     private int makeOperation(String operator, Integer firstElement, Integer secondElement) {
-        Double apply = arithmeticalOperations.get(operator).applyAsDouble(secondElement, firstElement);
-        return apply.intValue();
+        Double doubleResult = arithmeticalOperations.get(operator).applyAsDouble(secondElement, firstElement);
+        return doubleResult.intValue();
     }
 }
