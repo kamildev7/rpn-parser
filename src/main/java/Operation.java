@@ -1,3 +1,5 @@
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.DoubleBinaryOperator;
 
 /**
@@ -16,11 +18,25 @@ public enum Operation {
         this.op = op;
     }
 
+    public static Map<String, DoubleBinaryOperator> getOperations() {
+        Map<String, DoubleBinaryOperator> operations = new HashMap<>();
+        operations.put("+", Operation.PLUS.getOp());
+        operations.put("-", Operation.MINUS.getOp());
+        return operations;
+    }
+
     public String getSymbol() {
         return symbol;
     }
 
-    public double apply(double x, double y) {
-        return op.applyAsDouble(x, y);
+    public DoubleBinaryOperator getOp() {
+        return op;
+    }
+
+    @Override
+    public String toString() {
+        return "Operation{" +
+                "symbol='" + symbol + '\'' +
+                '}';
     }
 }
