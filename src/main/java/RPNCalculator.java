@@ -35,6 +35,9 @@ public class RPNCalculator {
     }
 
     private int makeOperation(String operator, Integer firstElement, Integer secondElement) {
+        if (firstElement == null || secondElement == null) {
+            throw new NullPointerException();
+        }
         Double doubleResult = arithmeticalOperations.get(operator).applyAsDouble(secondElement, firstElement);
         return doubleResult.intValue();
     }

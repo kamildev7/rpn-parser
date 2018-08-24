@@ -1,3 +1,6 @@
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.InputMismatchException;
 
 /**
@@ -5,11 +8,16 @@ import java.util.InputMismatchException;
  */
 public class Start {
     public static void main(String[] args) {
+        Logger logger = LoggerFactory.getLogger(Start.class);
         /* pattern: input output expression
         console console 3 11 + 5 - */
-        String[] expression = getExpressionFromInput(args);
-        String result = new RPNCalculator().calculateRPNValue(expression);
-        saveResultToOutput(result, args[1]);
+        try {
+            String[] expression = getExpressionFromInput(args);
+            String result = new RPNCalculator().calculateRPNValue(expression);
+            saveResultToOutput(result, args[1]);
+        } catch (Exception e) {
+            logger.error("Wrong arguments");
+        }
     }
 
     private static String[] getExpressionFromInput(String[] consoleInput) {
