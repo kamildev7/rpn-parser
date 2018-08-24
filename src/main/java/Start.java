@@ -16,6 +16,7 @@ public class Start {
             String result = new RPNCalculator().calculateRPNValue(expression);
             saveResultToOutput(result, args[1]);
         } catch (Exception e) {
+            e.printStackTrace();
             logger.error("Wrong arguments");
         }
     }
