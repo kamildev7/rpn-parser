@@ -1,1 +1,1 @@
-17:40-present break because of the storm (my computo)
+17:40-18.10 break because of the storm (my computer turned off)
